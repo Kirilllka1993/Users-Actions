@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+<head>
+    <title>User Info</title>
+</head>
+<body>
+<div>Welcome <p th:text="${userName}"></p>
+    <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+</div>
+
+<a th:href="@{/user/showUsers}" class="btn btn-info" role="button">Show all Users</a>
+<div th:each="userAccountDto: ${userAccountDtos}">
+    <span id="name" th:text="${userAccountDto.firstName}"></span>
+</div>
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/showUsers}" role="button">Show Users by admin</a>
+</body>
+
+<form th:action="@{/logout}" th:method="post">
+    <input type="submit" th:value="logout">
+</form>
+
+<div th></div>
+<div th:text="${userAccountDto}"></div>
+<form th:action="@{/user/{path}(path=${userId})}">
+</form>
+
+
+<!--<div th:text="${userAccountDto.username}"></div>-->
+<!--<form th:action="@{/viewUser/{userId}}" th:method="post">-->
+<!--    <p th:text="${userAccountDto.username}"></p>-->
+
+<!--    <input type="submit" th:value="view user by id">-->
+<!--</form>-->
+
+</html>

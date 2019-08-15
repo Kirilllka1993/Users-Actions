@@ -1,0 +1,20 @@
+package com.example.demo.service;
+
+import com.example.demo.dto.UserAccountDto;
+import com.example.demo.exception.NoSuchElementException;
+import com.example.demo.exception.RepeatitionException;
+
+import java.util.List;
+
+public interface AdminService {
+
+    void createNewUser(UserAccountDto userAccountDto) throws RepeatitionException;
+
+    UserAccountDto changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException;
+
+    UserAccountDto changeStatusOfUser(long userId, UserAccountDto userAccountDto);
+
+    UserAccountDto findUserByUsername(String username);
+
+
+}

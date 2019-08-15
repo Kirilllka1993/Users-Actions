@@ -1,0 +1,48 @@
+-- we don't know how to generate root <with-no-name> (class Root) :(
+create table status
+(
+    id serial not null
+        constraint status_pk
+            primary key,
+    name varchar not null
+);
+
+alter table status owner to postgres;
+
+create unique index status_name_uindex
+    on status (name);
+
+create table role
+(
+    id serial not null
+        constraint role_pk
+            primary key,
+    name varchar not null
+);
+
+alter table role owner to postgres;
+
+create unique index role_name_uindex
+    on role (name);
+
+create table user_account
+(
+    id serial not null
+        constraint user_account_pk
+            unique,
+    username varchar(16) not null,
+    password varchar(16) not null,
+    first_name varchar(16) not null,
+    last_name varchar(16) not null,
+    created_at date not null,
+    role_id integer not null
+        constraint user_account_role_id_fk
+            references role,
+    status_id integer not null
+        constraint user_account_status_id_fk
+            references status
+);
+
+alter table user_account owner to postgres;
+
+
