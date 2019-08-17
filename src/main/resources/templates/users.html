@@ -8,7 +8,24 @@
 <div th:insert="~{header}"></div>
 
 <div th:each="userAccountDto: ${userAccountDtos}">
-    <span id="name" th:text="${userAccountDto.firstName}"></span>
+    <ol>
+        User id: <span id="name" th:text="${userAccountDto.id}"></span>
+        <li>
+           User Name: <span id="name" th:text="${userAccountDto.username}"></span>
+        </li>
+        <li>
+           First Name: <span id="name" th:text="${userAccountDto.firstName}"></span>
+        </li>
+        <li>
+           Last Name: <span id="name" th:text="${userAccountDto.lastName}"></span>
+        </li>
+        <li>
+           Role: <span id="name" th:text="${userAccountDto.role}"></span>
+        </li>
+        <li>
+           Status: <span id="name" th:text="${userAccountDto.status}"></span>
+        </li>
+    </ol>
 </div>
 </body>
 </html>

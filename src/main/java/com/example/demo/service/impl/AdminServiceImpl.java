@@ -40,12 +40,16 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public UserAccountDto changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException {
+    public void changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException, RepeatitionException {
         UserAccount userAccount = adminRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
-        UserAccount checkUser = Optional.ofNullable(adminRepository.findUserAccountByUsername(newUserAccountDto.getUsername())).orElseThrow(() -> new NoSuchElementException());
-
-
-        return null;
+        Optional<UserAccount> checkUser = Optional.ofNullable(adminRepository.findUserAccountByUsername(newUserAccountDto.getUsername()));
+        if (checkUser.isPresent() == false | userAccount.getUsername().equals(newUserAccountDto.getUsername())) {
+            UserAccount newUserAccount = newUserDtoToUserAccount.convert(newUserAccountDto);
+            newUserAccount.setId(userId);
+            adminRepository.save(newUserAccount);
+        }else{
+            throw new RepeatitionException();
+        }
     }
 
     @Override

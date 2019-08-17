@@ -12,8 +12,8 @@ public interface AdminRepository extends CrudRepository<UserAccount,Long> {
     UserAccount findUserAccountByUsername(String username);
 
 //    @Modifying
-//    @Query("update UserAccount user set userAccount.lastName = ?1, u.lastname = ?2 where u.id = ?1")
-//    void setUserInfoById(long userAccountId, UserAccount userAccount);
+//    @Query("update UserAccount user set user=?2 where user.id = ?1")
+//    void updateUser(long userAccountId, UserAccount userAccount);
 
 //    @Modifying
 //    @Query("UPDATE FuneralLead flead SET flead.funeralLeadStatus = :status, flead.isActive = :isActive WHERE flead.id = :userId")

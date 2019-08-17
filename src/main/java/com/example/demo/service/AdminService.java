@@ -10,7 +10,7 @@ public interface AdminService {
 
     void createNewUser(UserAccountDto userAccountDto) throws RepeatitionException;
 
-    UserAccountDto changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException;
+    void changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException, RepeatitionException;
 
     UserAccountDto changeStatusOfUser(long userId, UserAccountDto userAccountDto);
 

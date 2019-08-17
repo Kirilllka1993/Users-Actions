@@ -55,7 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-
+//    https://intellitech.pro/tutorial-0-authentication-with-spring-security/
+//    https://stackoverflow.com/questions/30295343/spring-security-thymeleaf-lockedexception-custom-message
+//    https://www.mkyong.com/spring-security/spring-security-limit-login-attempts-example/
 }
 
 
