@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String goToUserPage(Model model) {
+    public String goToUserPage(Model model) throws NoSuchElementException {
         List<UserAccountDto> userAccountDtos = new ArrayList<>();
         model.addAttribute("userAccountDtos", userAccountDtos);
         return "userInfoPage.html";
@@ -39,17 +39,17 @@ public class UserController {
 
     @GetMapping("/user/showUsers")
     public String showUsers(Model model) {
-
         List<UserAccountDto> userAccountDtos = userService.getAllUsers();
         model.addAttribute("userAccountDtos", userAccountDtos);
-        return "userInfoPage.html";
+        return "users.html";
     }
 
     @GetMapping("/user/{userId}")
     public String viewUserById(@PathVariable("userId") long userId, Model model) throws NoSuchElementException {
-        model.addAttribute("userAccountDto", userService.viewUserById(userId));
+        UserAccountDto useraAccountDto=userService.viewUserById(userId);
+        model.addAttribute("useraAccountDto", useraAccountDto);
         model.addAttribute("userId", userId);
-        return "userInfoPage.html";
+        return "userInformation.html ";
     }
 
 

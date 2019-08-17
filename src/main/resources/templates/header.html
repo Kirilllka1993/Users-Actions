@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" , xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+
+    <title>Header</title>
+</head>
+<body>
+<br>
+<div>
+    <table border="1" bordercolor="E0FFFF" width="850" height="250"
+           cellpadding="10">
+        <tr>
+            <th background="https://naviny.by/media/2014.01_w4/download/nok/08_NOK_press.JPG">
+                <h1><span th:text="Hello" style="color: black; font-family: Monotype Corsiva; "></span>
+                </h1>
+            </th>
+        </tr>
+    </table>
+</div>
+<a th:href="@{/user/{path}(path=${userId})}" class="btn btn-warning" role="button">View User</a>
+<a th:href="@{/user/showUsers}" class="btn btn-warning" role="button">Show Users</a>
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/redirectToCreate}" class="btn btn-warning" role="button">Create new User</a>
+<!--<a sec:authorize="isAuthenticated()" th:href="@{/user/{path}(path=${userId})}" class="btn btn-info" role="button" th:text="#{button.profile}"></a>-->
+<!--<a th:href="@{/products}" th:text="#{button.products}" class="btn btn-info" role="button"></a>-->
+<!--<a sec:authorize="isAuthenticated()" th:href="@{/users}" class="btn btn-info" role="button" th:text="#{button.users}"></a>-->
+<!--<a sec:authorize="isAuthenticated()" th:href="@{/rewiews}" class="btn btn-info" role="button" th:text="#{button.rewiews}"></a>-->
+<!--<a sec:authorize="isAuthenticated()" th:href="@{/materials}" class="btn btn-info" role="button" th:text="#{button.materials}"></a>-->
+<br>
+<a sec:authorize="hasAuthority('Admin')" th:href="@{/product-save}" class="btn btn-secondary" role="button"
+   th:text="#{button.addProduct}"></a>
+<a sec:authorize="hasAuthority('Admin')" th:href="@{/material-save}" class="btn btn-secondary" role="button"
+   th:text="#{button.addMaterial}"></a>
+<br>
+<div th:fragment="logout" sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" th:method="post">
+        <input type="submit" th:value="Logout">
+    </form>
+</div>
+<br>
+</body>
+</html>

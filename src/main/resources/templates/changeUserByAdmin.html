@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Change User</title>
+</head>
+<body>
+<div th:insert="~{header}"></div>
+<form th:action="@{/signIn}" th:method="post" th:object="${userAccountDto}">
+    <span>User Name: <input th:value="${useraAccountDto.username}" th:field="*{username}"/></span>
+    <span>User Name: <input th:value="${useraAccountDto.firstName}" /></span>
+    <span>User Name: <input th:value="${useraAccountDto.lastName}" /></span>
+    <span>User Name: <input th:value="${useraAccountDto.status}" /></span>
+    <span>User Name: <input th:value="${useraAccountDto.role}" /></span>
+</form>
+
+</body>
+</html>
