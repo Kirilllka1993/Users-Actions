@@ -10,20 +10,23 @@
         <tr>
             <td>User Name</td>
             <td><input type="text" th:field="*{username}"/></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User name error</td>
         </tr>
         <tr>
             <td>Password</td>
             <td><input type="password" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</td>
         </tr>
         <tr>
             <td>First Name</td>
             <td><input type="text" th:field="*{firstName}"/></td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error</td>
         </tr>
         <tr>
             <td>Last Name</td>
             <td><input type="text" th:field="*{lastName}"/></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error</td>
         </tr>
-        <tr>
             <td>Role <select th:field="*{role}">
                 <option th:value="ADMIN">ADMIN</option>
                 <option th:value="USER">USER</option>
@@ -42,7 +45,6 @@
                 <input type="submit" value="Submit"/>
                 <a th:href="@{/user}">Cancel</a>
             </td>
-            <td>&nbsp;</td>
         </tr>
     </table>
 </form>

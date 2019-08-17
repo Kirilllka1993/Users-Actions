@@ -5,13 +5,27 @@
     <title>Change User</title>
 </head>
 <body>
+
 <div th:insert="~{header}"></div>
-<form th:action="@{/user/admin/editUser}" th:method="put" th:object="${newUserAccountDto}">
+
+<form th:action="@{/user/admin/editUser}" th:method="post" th:object="${newUserAccountDto}">
     <span><input type="number" name="userId" title="Please enter a valid ID">/</span><br>
-    <span>User Name: <input th:field="*{username}"/></span><br>
-    <span>First Name: <input th:field="*{firstName}"/></span><br>
-    <span>Last Name: <input th:field="*{lastName}"/></span><br>
-    <span>Password: <input th:field="*{password}"/></span><br>
+    <span>
+        <span>User Name: <input th:field="*{username}"/></span>
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name error</span>
+    </span><br>
+    <span>
+    <span>First Name: <input th:field="*{firstName}"/></span>
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error</span>
+    </span><br>
+    <span>
+    <span>Last Name: <input th:field="*{lastName}"/></span>
+    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error</td>
+    </span><br>
+    <span>
+    <span>Password: <input th:type="password" th:field="*{password}"/></span>
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</span>
+    </span><br>
     <span>Role:
         <select th:field="*{role}">
                 <option th:value="ADMIN">ADMIN</option>

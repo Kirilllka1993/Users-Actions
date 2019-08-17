@@ -14,29 +14,8 @@
 <div th:each="userAccountDto: ${userAccountDtos}">
     <span id="name" th:text="${userAccountDto.firstName}"></span>
 </div>
-<!--<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/showUsers}" role="button">Show Users by admin</a>-->
-
-
 </body>
-
 <form th:action="@{/logout}" th:method="post">
     <input type="submit" th:value="logout">
 </form>
-
-
-<!--<form th:action="@{/user/{path}(path=${userId})}">-->
-<!--</form>-->
-
-<!--<div>-->
-<!--    <span type="text" th:text="${useraAccountDto.username}"></span>-->
-<!--</div>-->
-
-
-<!--<div th:text="${userAccountDto.username}"></div>-->
-<!--<form th:action="@{/viewUser/{userId}}" th:method="post">-->
-<!--    <p th:text="${userAccountDto.username}"></p>-->
-
-<!--    <input type="submit" th:value="view user by id">-->
-<!--</form>-->
-
 </html>

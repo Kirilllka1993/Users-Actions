@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String goToUserPage(Model model) throws NoSuchElementException {
+    public String goToUserPage(Model model) {
         List<UserAccountDto> userAccountDtos = new ArrayList<>();
         UserAccountDto userAccountDto = new UserAccountDto();
         model.addAttribute("userAccountDtos", userAccountDtos);

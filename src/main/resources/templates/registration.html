@@ -10,57 +10,32 @@
     <table>
         <tr>
             <td>User Name</td>
-            <td><input type="text" th:field="*{username}" /></td>
+            <td><input type="text" th:field="*{username}"/></td>
             <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User name error</td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" th:field="*{password}" /> </td>
+            <td><input type="password" th:field="*{password}"/></td>
             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</td>
         </tr>
         <tr>
             <td>First Name</td>
-            <td><input type="text" th:field="*{firstName}" /> </td>
-            <td th:if="${#fields.hasErrors('password')}" th:errors="*{firstName}">First Name error</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error</td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td><input type="text" th:field="*{lastName}" /> </td>
-            <td th:if="${#fields.hasErrors('password')}" th:errors="*{lastName}">Last Name error</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error</td>
         </tr>
         <tr>
-            <td>Role</td>
-            <td><input type="text" th:field="*{role}" /> </td>
-        </tr>
-        <tr>
-            <td>Status</td>
-            <td><input type="status" th:field="*{status}" /> </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
             <td>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit"/>
                 <a th:href="@{/}">Cancel</a>
             </td>
-            <td>&nbsp;</td>
         </tr>
     </table>
 </form>
-
-<!--<a th:href="@{/personList}">Person List</a>-->
-
-<!--<a th:href="@{/admin/user-info}">User-Info</a>-->
-<!--<div th:object="${userAccountDto}">-->
-<!--    <br>-->
-
-<!--    <p><b>Наименование: </b>-->
-<!--        <span id="name" th:text="${userAccountDto.firstName}"></span>-->
-<!--        <span id="article" th:text="${userAccountDto.username}"> User Name</span></p>-->
-
-<!--    <b>Id: </b> <span id="value" th:text="${userAccountDto.id}">User Id</span>-->
-
-<!--</div>-->
-
 </body>
 </html>
 

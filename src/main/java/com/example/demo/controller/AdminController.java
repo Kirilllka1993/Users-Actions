@@ -7,7 +7,10 @@ import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller()
 public class AdminController {
@@ -21,10 +24,16 @@ public class AdminController {
     }
 
     @PostMapping("/user/admin/userCreate")
-    public String createUser(UserAccountDto userAccountDto, Model model) throws RepeatitionException {
-        adminService.createNewUser(userAccountDto);
-        model.addAttribute("userAccountDto", userAccountDto);
-        return "userInfoPage.html";
+    public String createUser(@Valid UserAccountDto userAccountDto,
+                             BindingResult bindingResult1,
+                             Model model) throws RepeatitionException {
+        if (bindingResult1.hasErrors()) {
+            return "registration.html";
+        } else {
+            adminService.createNewUser(userAccountDto);
+            model.addAttribute("userAccountDto", userAccountDto);
+            return "userInfoPage.html";
+        }
     }
 
     @GetMapping("/user/admin/edit")
@@ -33,14 +42,20 @@ public class AdminController {
         return "changeUserByAdmin.html";
     }
 
-    @PutMapping("/user/admin/editUser")
+    @PostMapping("/user/admin/editUser")
     public String changeUser(@RequestParam("userId") long userId,
-                             Model model,
-                             UserAccountDto newUserAccountDto) throws NoSuchElementException, RepeatitionException {
+                             @Valid UserAccountDto newUserAccountDto,
+                             BindingResult bindingResult,
+                             Model model
+    ) throws NoSuchElementException, RepeatitionException {
         model.addAttribute("userId", userId);
-        model.addAttribute("newUserAccountDto", new UserAccountDto());
-        adminService.changeUser(userId, newUserAccountDto);
-        return "changeUserByAdmin.html";
+        model.addAttribute("newUserAccountDto", newUserAccountDto);
+        if (bindingResult.hasErrors()) {
+            return "registration.html";
+        } else {
+            adminService.changeUser(userId, newUserAccountDto);
+            return "userInfoPage.html";
+        }
     }
 
     //    Вариант редактирования через RequestBody используя аннотацию pathVariable, если выполнить без использования thymeleaf, а используя

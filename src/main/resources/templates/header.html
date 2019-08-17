@@ -33,14 +33,12 @@
 <!--</form>-->
 <!--<a th:href="@{/user/{path}(path=${userId})}" class="btn btn-warning" role="button">View User</a>-->
 <a th:href="@{/user/showUsers}" class="btn btn-warning" role="button">Show Users</a>
-<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/redirectToCreate}" class="btn btn-warning" role="button">Create new User</a>
-<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/edit}" class="btn btn-warning" role="button">Edit User</a>
-<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/editStatusPage}" class="btn btn-warning" role="button">Edit Status</a>
-<!--<a sec:authorize="isAuthenticated()" th:href="@{/user/{path}(path=${userId})}" class="btn btn-info" role="button" th:text="#{button.profile}"></a>-->
-<!--<a th:href="@{/products}" th:text="#{button.products}" class="btn btn-info" role="button"></a>-->
-<!--<a sec:authorize="isAuthenticated()" th:href="@{/users}" class="btn btn-info" role="button" th:text="#{button.users}"></a>-->
-<!--<a sec:authorize="isAuthenticated()" th:href="@{/rewiews}" class="btn btn-info" role="button" th:text="#{button.rewiews}"></a>-->
-<!--<a sec:authorize="isAuthenticated()" th:href="@{/materials}" class="btn btn-info" role="button" th:text="#{button.materials}"></a>-->
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/redirectToCreate}" class="btn btn-warning"
+   role="button">Create new User</a>
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/edit}" class="btn btn-warning" role="button">Edit
+    User</a>
+<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/editStatusPage}" class="btn btn-warning" role="button">Edit
+    Status</a>
 <br>
 <div th:fragment="logout" sec:authorize="isAuthenticated()">
     <form th:action="@{/logout}" th:method="post">

@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/user/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/user").hasAnyAuthority("ADMIN","USER")
+                .antMatchers("/user").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -54,10 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-//    https://intellitech.pro/tutorial-0-authentication-with-spring-security/
-//    https://stackoverflow.com/questions/30295343/spring-security-thymeleaf-lockedexception-custom-message
-//    https://www.mkyong.com/spring-security/spring-security-limit-login-attempts-example/
 }
 
 

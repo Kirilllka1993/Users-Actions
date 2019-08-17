@@ -14,27 +14,20 @@
     <br/><br/>
     <form th:action="@{/login}" method="POST" class="form-signin" style="width:30%;margin:auto">
         <h3 class="form-signin-heading">LOGIN PAGE</h3>
-
         <br/>
-<!--        <div align="center" th:if="${param.error}">-->
-<!--            <p style="font-size: 20; color: #FF1C19;">Username or password is invalid or your statos is inactive</p>-->
-<!--        </div>-->
         <div class="error" th:if="${param.error}"
              th:with="errorMsg=${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
             Reason: <span th:text="${errorMsg}">Wrong input!</span>
         </div>
 
-        <input type="text" id="username" name="username"  th:placeholder="Username"
-               class="form-control" /> <br/>
-        <input type="password"  th:placeholder="Password"
-               id="password" name="password" class="form-control" /> <br />
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
-
+        <input type="text" id="username" name="username" th:placeholder="Username"
+               class="form-control"/> <br/>
+        <input type="password" th:placeholder="Password"
+               id="password" name="password" class="form-control"/> <br/>
+        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
+                th:text="Login"></button>
     </form>
-    <a th:href="@{/registration}" >If you are not registrate, please click here</a>
+    <a th:href="@{/registration}">If you are not registrate, please click here</a>
 </div>
 </body>
 </html>
-
-
-<!--https://stackoverflow.com/questions/30295343/spring-security-thymeleaf-lockedexception-custom-message-->
