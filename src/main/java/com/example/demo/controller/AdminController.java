@@ -54,5 +54,20 @@ public class AdminController {
         return "changeUserByAdmin.html";
     }
 
+    @GetMapping("/user/admin/editStatusPage")
+    public String changeStatusPage(Model model) {
+        model.addAttribute("status", new String());
+        return "updateStatus.html";
+    }
+
+    @PutMapping("/user/admin/editStatus")
+    public String changeStatus(@RequestParam("userId") long userId,
+                               @RequestParam String status,
+                               Model model) throws NoSuchElementException {
+        model.addAttribute("status", status);
+        adminService.changeStatusOfUser(userId,status);
+        return "updateStatus.html";
+    }
+
 
 }

@@ -7,10 +7,12 @@ import com.example.demo.dao.AdminRepository;
 import com.example.demo.dto.UserAccountDto;
 import com.example.demo.exception.NoSuchElementException;
 import com.example.demo.exception.RepeatitionException;
+import com.example.demo.model.Status;
 import com.example.demo.model.UserAccount;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -52,8 +54,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public UserAccountDto changeStatusOfUser(long userId, String status) {
-        return null;
+    @Transactional
+    public void changeStatusOfUser(long userId, String status) throws NoSuchElementException {
+        UserAccount userAccount = adminRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+        Status newStatus=Status.valueOf(status);
+        adminRepository.updateUserStatus(userId,newStatus);
     }
 
     @Override
