@@ -23,15 +23,6 @@
         </tr>
     </table>
 </div>
-<!--<form name="myform" id="myform" action="#" th:action="@{/user/{path}(path=${userAccountDto.id})}" th:object="${userAccountDto}" method="get">-->
-<!--    <input id="id" name="id" type="number" title="Please enter a valid ID" th:field="*{id}">-->
-<!--    <input type="submit" value="View" />-->
-<!--</form>-->
-<!--<form name="myform" action="useri" method="get">-->
-<!--    <input id="id" name="userId" type="number" title="Please enter a valid ID">-->
-<!--    <input type="submit" value="View" />-->
-<!--</form>-->
-<!--<a th:href="@{/user/{path}(path=${userId})}" class="btn btn-warning" role="button">View User</a>-->
 <a th:href="@{/user/showUsers}" class="btn btn-warning" role="button">Show Users</a>
 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/user/admin/redirectToCreate}" class="btn btn-warning"
    role="button">Create new User</a>
