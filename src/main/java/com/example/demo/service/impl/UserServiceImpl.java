@@ -28,8 +28,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserAccountToUserAccountDto userAccountToUserAccountDto;
     @Autowired
-    private AdminService adminService;
-    @Autowired
     private AdminRepository adminRepository;
 
 

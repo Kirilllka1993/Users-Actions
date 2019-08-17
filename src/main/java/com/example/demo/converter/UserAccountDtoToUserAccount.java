@@ -1,6 +1,5 @@
 package com.example.demo.converter;
 
-//import com.example.demo.dto.UserAccountDto;
 import com.example.demo.dto.UserAccountDto;
 import com.example.demo.model.Role;
 import com.example.demo.model.Status;
@@ -21,7 +20,7 @@ public class UserAccountDtoToUserAccount implements Converter<UserAccountDto, Us
 
     @Override
     public UserAccount convert(UserAccountDto userAccountDto) {
-        UserAccount userAccount=new UserAccount();
+        UserAccount userAccount = new UserAccount();
         userAccount.setFirstName(userAccountDto.getFirstName());
         userAccount.setLastName(userAccountDto.getLastName());
         userAccount.setPassword(encoder.encode(userAccountDto.getPassword()));

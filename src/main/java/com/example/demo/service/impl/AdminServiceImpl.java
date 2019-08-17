@@ -22,8 +22,6 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminRepository adminRepository;
     @Autowired
-    private UserAccountDtoToUserAccount userAccountDtoToUserAccount;
-    @Autowired
     private UserAccountToUserAccountDto userAccountToUserAccountDto;
     @Autowired
     private NewUserDtoToUserAccount newUserDtoToUserAccount;

@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Role;
-import com.example.demo.model.Status;
 import com.example.demo.model.UserAccount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
