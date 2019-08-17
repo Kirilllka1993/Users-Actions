@@ -17,17 +17,17 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Size(min = 3, max = 16)
-    @Pattern(regexp = "^[A-Za-z0-9]*$")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "Username состоит только из латинских букв")
     @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;
     @Size(min = 1, max = 16)
-    @Pattern(regexp = "^[A-Za-z]*$")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "First name состоит только из латинских букв")
     @Column(name = "first_name")
     private String firstName;
     @Size(min = 1, max = 16)
-    @Pattern(regexp = "^[A-Za-z]*$")
+    @Pattern(regexp = "^[A-Za-z]*$",  message = "Last name состоит только из латинских букв")
     @Column(name = "last_name")
     private String lastName;
     @Enumerated(EnumType.ORDINAL)

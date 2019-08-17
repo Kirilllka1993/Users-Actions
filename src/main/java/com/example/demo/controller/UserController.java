@@ -7,8 +7,10 @@ import com.example.demo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,18 +26,25 @@ public class UserController {
     }
 
     @PostMapping("/signIn")
-    public String addUser(UserAccountDto userAccountDto, Model model) throws RepeatitionException {
-        String userName = userService.signIn(userAccountDto);
-        model.addAttribute("userName", userName);
-        return "userInfoPage.html";
+    public String checkPersonInfo(@Valid UserAccountDto userAccountDto,
+                                  BindingResult bindingResult,
+                                  Model model) throws RepeatitionException {
+        model.addAttribute("userAccountDto", userAccountDto);
+        if (bindingResult.hasErrors()) {
+            return "registration.html";
+        } else {
+            String userName = userService.signIn(userAccountDto);
+            model.addAttribute("userName", userName);
+            return "userInfoPage.html";
+        }
     }
 
     @GetMapping("/user")
     public String goToUserPage(Model model) throws NoSuchElementException {
         List<UserAccountDto> userAccountDtos = new ArrayList<>();
-        UserAccountDto userAccountDto=new UserAccountDto();
+        UserAccountDto userAccountDto = new UserAccountDto();
         model.addAttribute("userAccountDtos", userAccountDtos);
-        model.addAttribute("userAccountDto",new UserAccountDto());
+        model.addAttribute("userAccountDto", new UserAccountDto());
         return "userInfoPage.html";
     }
 
@@ -48,7 +57,7 @@ public class UserController {
 
     @GetMapping("/user/{userId}")
     public String viewUserById(@PathVariable("userId") long userId, Model model) throws NoSuchElementException {
-        UserAccountDto useraAccountDto=userService.viewUserById(userId);
+        UserAccountDto useraAccountDto = userService.viewUserById(userId);
         model.addAttribute("useraAccountDto", useraAccountDto);
         model.addAttribute("userId", userId);
         return "userInformation.html ";

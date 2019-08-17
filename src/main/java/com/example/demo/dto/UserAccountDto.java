@@ -4,6 +4,7 @@ import com.example.demo.model.UserAccount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -13,12 +14,16 @@ public class UserAccountDto {
 
     private long id;
     @Size(min = 3, max = 16)
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Username состоит только из латинских букв")
     private String username;
     @Size(min = 3, max = 16)
+    @Pattern(regexp = "^(?=.*[0-9])[A-Za-z0-9].{2,}$", message = "Пароль должен иметь минимум одну цифру и должен состоять из латинских букв и цифр")
     private String password;
     @Size(min = 1, max = 16)
+    @Pattern(regexp = "^[A-Za-z]*$", message = "First name состоит только из латинских букв")
     private String firstName;
     @Size(min = 1, max = 16)
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Last name состоит только из латинских букв")
     private String lastName;
     private String role;
     private String status;
