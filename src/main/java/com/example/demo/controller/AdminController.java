@@ -17,21 +17,16 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/admin/redirectToCreate")
+    @GetMapping("/user/admin/redirectToCreate")
     public String redirectToCreating(Model model) {
         model.addAttribute("userAccountDto", new UserAccountDto());
         return "registrationByAdmin.html";
     }
 
-    @PostMapping("/admin/userCreate")
+    @PostMapping("/user/admin/userCreate")
     public String createUser(UserAccountDto userAccountDto, Model model) throws RepeatitionException {
         adminService.createNewUser(userAccountDto);
         model.addAttribute("userAccountDto", userAccountDto);
-        return "userInfoPage.html";
-    }
-
-    @PostMapping("/admin/{userId}/edit")
-    public String viewUserById(@PathVariable("userId") long userId, Model model) throws NoSuchElementException {
         return "userInfoPage.html";
     }
 
@@ -58,7 +53,6 @@ public class AdminController {
         adminService.changeUser(userId, newUserAccountDto);
         return "changeUserByAdmin.html";
     }
-
 
 
 }

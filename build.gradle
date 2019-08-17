@@ -15,8 +15,6 @@ configurations {
     }
 }
 
-
-
 repositories {
     mavenCentral()
 }
@@ -27,17 +25,15 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    
+
     compile 'org.postgresql:postgresql'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile("org.springframework.boot:spring-boot-starter-security")
-    
+
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
 
     compile 'org.apache.commons:commons-collections4:4.4'
     compile group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.11.RELEASE'
     compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
-
-//    testCompile("org.springframework.security:spring-security-test")
 }

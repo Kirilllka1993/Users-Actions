@@ -12,7 +12,6 @@ import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,13 +46,13 @@ public class AdminServiceImpl implements AdminService {
             UserAccount newUserAccount = newUserDtoToUserAccount.convert(newUserAccountDto);
             newUserAccount.setId(userId);
             adminRepository.save(newUserAccount);
-        }else{
+        } else {
             throw new RepeatitionException();
         }
     }
 
     @Override
-    public UserAccountDto changeStatusOfUser(long userId, UserAccountDto userAccountDto) {
+    public UserAccountDto changeStatusOfUser(long userId, String status) {
         return null;
     }
 

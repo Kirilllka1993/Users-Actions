@@ -8,25 +8,23 @@
 <div th:insert="~{header}"></div>
 <form th:action="@{/user/admin/editUser}" th:method="put" th:object="${newUserAccountDto}">
     <span><input type="number" name="userId" title="Please enter a valid ID">/</span><br>
-    <span>User Name: <input  th:field="*{username}"/></span><br>
-    <span>First Name: <input  th:field="*{firstName}"/></span><br>
-    <span>Last Name: <input  th:field="*{lastName}"/></span>
-    <span>Password: <input  th:field="*{password}"/></span><br>
-        <span>Role:
+    <span>User Name: <input th:field="*{username}"/></span><br>
+    <span>First Name: <input th:field="*{firstName}"/></span><br>
+    <span>Last Name: <input th:field="*{lastName}"/></span><br>
+    <span>Password: <input th:field="*{password}"/></span><br>
+    <span>Role:
         <select th:field="*{role}">
                 <option th:value="ADMIN">ADMIN</option>
                 <option th:value="USER">USER</option>
             </select>
             </span><br>
-        <span>Status:
+    <span>Status:
             <select th:field="*{status}">
                 <option th:value="ACTIVE">ACTIVE</option>
                 <option th:value="INACTIVE">INACTIVE</option>
             </select>
         </span><br>
-<!--    <span>User Name: <input th:value="${useraAccountDto.status}" th:field="*{status}"/></span><br>-->
-<!--    <span>User Name: <input th:value="${useraAccountDto.role}" th:field="*{role}/></span><br>-->
-    <span><input type="submit" value="Submit" /></span>
+    <span><input type="submit" value="Submit"/></span>
 </form>
 
 </body>

@@ -12,7 +12,7 @@ public interface AdminService {
 
     void changeUser(long userId, UserAccountDto newUserAccountDto) throws NoSuchElementException, RepeatitionException;
 
-    UserAccountDto changeStatusOfUser(long userId, UserAccountDto userAccountDto);
+    UserAccountDto changeStatusOfUser(long userId, String status);
 
     UserAccountDto findUserByUsername(String username);
 
