@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -14,12 +16,18 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Size(min = 3, max = 16)
+    @Pattern(regexp = "^[A-Za-z0-9]*$")
     @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;
+    @Size(min = 1, max = 16)
+    @Pattern(regexp = "^[A-Za-z]*$")
     @Column(name = "first_name")
     private String firstName;
+    @Size(min = 1, max = 16)
+    @Pattern(regexp = "^[A-Za-z]*$")
     @Column(name = "last_name")
     private String lastName;
     @Enumerated(EnumType.ORDINAL)

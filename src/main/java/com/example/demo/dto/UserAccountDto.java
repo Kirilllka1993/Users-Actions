@@ -4,6 +4,7 @@ import com.example.demo.model.UserAccount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -11,9 +12,13 @@ import java.time.LocalDate;
 public class UserAccountDto {
 
     private long id;
+    @Size(min = 3, max = 16)
     private String username;
+    @Size(min = 3, max = 16)
     private String password;
+    @Size(min = 1, max = 16)
     private String firstName;
+    @Size(min = 1, max = 16)
     private String lastName;
     private String role;
     private String status;

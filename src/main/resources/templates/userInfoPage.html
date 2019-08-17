@@ -9,7 +9,7 @@
 
 
 <div>Welcome <p th:text="${userName}"></p>
-    <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+    <span th:text="${#authentication.getPrincipal()}"></span>
 </div>
 <div th:each="userAccountDto: ${userAccountDtos}">
     <span id="name" th:text="${userAccountDto.firstName}"></span>
